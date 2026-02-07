@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- ========================================
+         META TAGS ESSENCIAIS PARA SEO
+         ======================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Meta Tags SEO Primárias -->
+  <title>Fundamentos de HTML, CSS e JavaScript | Curso Completo 2026</title>
+  <meta name="description"
+    content="Aprenda os fundamentos de HTML semântico, CSS moderno e JavaScript. Curso completo com exemplos práticos de SEO e Schema Markup para iniciantes.">
+  <meta name="keywords" content="HTML, CSS, JavaScript, SEO, Schema Markup, desenvolvimento web, programação">
+  <meta name="author" content="Seu Nome">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="Portuguese">
+
+  <!-- Canonical URL - Evita conteúdo duplicado -->
+  <link rel="canonical" href="https://seusite.com.br/fundamentos-web">
+
+  <!-- ========================================
+         OPEN GRAPH (Facebook, LinkedIn, WhatsApp)
+         ======================================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seusite.com.br/fundamentos-web">
+  <meta property="og:title" content="Fundamentos de HTML, CSS e JavaScript | Curso Completo">
+  <meta property="og:description"
+    content="Aprenda os fundamentos de HTML semântico, CSS moderno e JavaScript com exemplos práticos.">
+  <meta property="og:image" content="https://seusite.com.br/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Curso de Fundamentos Web">
+
+  <!-- ========================================
+         TWITTER CARDS
+         ======================================== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://seusite.com.br/fundamentos-web">
+  <meta name="twitter:title" content="Fundamentos de HTML, CSS e JavaScript">
+  <meta name="twitter:description" content="Curso completo de desenvolvimento web para iniciantes.">
+  <meta name="twitter:image" content="https://seusite.com.br/images/twitter-image.jpg">
+  <meta name="twitter:creator" content="@seutwitter">
+
+  <!-- ========================================
+         FAVICON E ÍCONES
+         ======================================== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- ========================================
+         SCHEMA.ORG - JSON-LD (DADOS ESTRUTURADOS)
+         ======================================== -->
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Fundamentos de HTML, CSS e JavaScript",
+        "description": "Curso completo de desenvolvimento web cobrindo HTML semântico, CSS moderno e JavaScript para iniciantes.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Seu Nome ou Empresa",
+            "sameAs": "https://seusite.com.br"
+        },
+        "courseCode": "WEB101",
+        "coursePrerequisites": "Nenhum conhecimento prévio necessário",
+        "educationalLevel": "Iniciante",
+        "teaches": ["HTML5", "CSS3", "JavaScript", "SEO", "Schema Markup"],
+        "inLanguage": "pt-BR",
+        "isAccessibleForFree": true,
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+
+  <!-- Schema para WebPage -->
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Fundamentos de HTML, CSS e JavaScript",
+        "description": "Página educacional sobre desenvolvimento web",
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://seusite.com.br"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Cursos",
+                    "item": "https://seusite.com.br/cursos"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Fundamentos Web",
+                    "item": "https://seusite.com.br/fundamentos-web"
+                }
+            ]
+        },
+        "mainEntity": {
+            "@type": "Article",
+            "headline": "Fundamentos de HTML, CSS e JavaScript",
+            "author": {
+                "@type": "Person",
+                "name": "Seu Nome"
+            },
+            "datePublished": "2026-02-07",
+            "dateModified": "2026-02-07"
+        }
+    }
+    </script>
+
+  <!-- Schema para FAQ (Rich Snippets) -->
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "O que é HTML semântico?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "HTML semântico é o uso de tags HTML que transmitem significado sobre o conteúdo, não apenas sua aparência. Tags como header, nav, main, article, section e footer ajudam navegadores e mecanismos de busca a entender a estrutura da página."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Por que SEO é importante?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "SEO (Search Engine Optimization) é importante porque ajuda seu site a ser encontrado nos mecanismos de busca, aumentando o tráfego orgânico, a visibilidade da marca e potencialmente as conversões, sem custo por clique."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "O que é Schema Markup?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Schema Markup é um vocabulário de dados estruturados que ajuda os mecanismos de busca a entender melhor o conteúdo das páginas. Isso pode resultar em rich snippets nos resultados de busca, melhorando a taxa de cliques."
+                }
+            }
+        ]
+    }
+    </script>
+
+  <!-- ========================================
+         CSS INTERNO (Para fins didáticos)
+         ======================================== -->
+  <style>
+    /* ========================================
+           CSS RESET E VARIÁVEIS
+           ======================================== */
+    :root {
+      /* Cores - Sistema de Design */
+      --color-primary: #2563eb;
+      --color-primary-dark: #1d4ed8;
+      --color-secondary: #64748b;
+      --color-accent: #f59e0b;
+      --color-success: #10b981;
+      --color-error: #ef4444;
+
+      /* Cores de Texto */
+      --color-text-primary: #1e293b;
+      --color-text-secondary: #475569;
+      --color-text-muted: #94a3b8;
+
+      /* Cores de Background */
+      --color-bg-primary: #ffffff;
+      --color-bg-secondary: #f8fafc;
+      --color-bg-tertiary: #e2e8f0;
+
+      /* Tipografia */
+      --font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --font-family-mono: 'Fira Code', 'Consolas', monospace;
+
+      /* Tamanhos de Fonte */
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      --font-size-3xl: 1.875rem;
+      --font-size-4xl: 2.25rem;
+
+      /* Espaçamentos */
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+
+      /* Bordas */
+      --border-radius-sm: 0.25rem;
+      --border-radius-md: 0.5rem;
+      --border-radius-lg: 1rem;
+
+      /* Sombras */
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+      /* Transições */
+      --transition-fast: 150ms ease;
+      --transition-normal: 300ms ease;
+    }
+
+    /* Reset CSS Moderno */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family-base);
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      color: var(--color-text-primary);
+      background-color: var(--color-bg-primary);
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--color-primary-dark);
+      text-decoration: underline;
+    }
+
+    /* ========================================
+           LAYOUT - CONTAINER
+           ======================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    /* ========================================
+           COMPONENTE - SKIP LINK (Acessibilidade)
+           ======================================== */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-primary);
+      color: white;
+      padding: var(--spacing-sm) var(--spacing-md);
+      z-index: 1000;
+      transition: top var(--transition-fast);
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* ========================================
+           COMPONENTE - HEADER
+           ======================================== */
+    .header {
+      background: var(--color-bg-primary);
+      border-bottom: 1px solid var(--color-bg-tertiary);
+      padding: var(--spacing-md) 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+    }
+
+    .header__logo {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* ========================================
+           COMPONENTE - NAVEGAÇÃO
+           ======================================== */
+    .nav__list {
+      display: flex;
+      gap: var(--spacing-lg);
+      list-style: none;
+    }
+
+    .nav__link {
+      font-weight: 500;
+      padding: var(--spacing-sm) 0;
+      position: relative;
+    }
+
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width var(--transition-normal);
+    }
+
+    .nav__link:hover::after,
+    .nav__link:focus::after {
+      width: 100%;
+    }
+
+    /* ========================================
+           COMPONENTE - HERO SECTION
+           ======================================== */
+    .hero {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      padding: var(--spacing-2xl) 0;
+      text-align: center;
+    }
+
+    .hero__title {
+      font-size: var(--font-size-4xl);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.2;
+    }
+
+    .hero__subtitle {
+      font-size: var(--font-size-lg);
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto var(--spacing-xl);
+    }
+
+    .hero__cta {
+      display: inline-block;
+      background: var(--color-accent);
+      color: var(--color-text-primary);
+      padding: var(--spacing-md) var(--spacing-xl);
+      border-radius: var(--border-radius-md);
+      font-weight: 600;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .hero__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+
+    /* ========================================
+           COMPONENTE - SEÇÕES DE CONTEÚDO
+           ======================================== */
+    .section {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .section--alt {
+      background: var(--color-bg-secondary);
+    }
+
+    .section__title {
+      font-size: var(--font-size-3xl);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-xl);
+      text-align: center;
+    }
+
+    .section__title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--color-primary);
+      margin: var(--spacing-md) auto 0;
+      border-radius: var(--border-radius-sm);
+    }
+
+    /* ========================================
+           COMPONENTE - CARDS
+           ======================================== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .card {
+      background: var(--color-bg-primary);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card__icon {
+      font-size: var(--font-size-4xl);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .card__title {
+      font-size: var(--font-size-xl);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .card__description {
+      color: var(--color-text-secondary);
+    }
+
+    /* ========================================
+           COMPONENTE - CÓDIGO
+           ======================================== */
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius-md);
+      overflow-x: auto;
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-sm);
+      line-height: 1.7;
+      margin: var(--spacing-md) 0;
+    }
+
+    .code-inline {
+      background: var(--color-bg-tertiary);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-sm);
+    }
+
+    /* Syntax Highlighting */
+    .code-block .tag {
+      color: #f472b6;
+    }
+
+    .code-block .attr {
+      color: #a5f3fc;
+    }
+
+    .code-block .value {
+      color: #86efac;
+    }
+
+    .code-block .comment {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    /* ========================================
+           COMPONENTE - TABELA
+           ======================================== */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--spacing-md) 0;
+    }
+
+    .table th,
+    .table td {
+      padding: var(--spacing-md);
+      text-align: left;
+      border-bottom: 1px solid var(--color-bg-tertiary);
+    }
+
+    .table th {
+      background: var(--color-bg-secondary);
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .table tr:hover {
+      background: var(--color-bg-secondary);
+    }
+
+    /* ========================================
+           COMPONENTE - FAQ (Accordion)
+           ======================================== */
+    .faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq__item {
+      border: 1px solid var(--color-bg-tertiary);
+      border-radius: var(--border-radius-md);
+      margin-bottom: var(--spacing-md);
+      overflow: hidden;
+    }
+
+    .faq__question {
+      width: 100%;
+      padding: var(--spacing-lg);
+      background: var(--color-bg-primary);
+      border: none;
+      text-align: left;
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background var(--transition-fast);
+    }
+
+    .faq__question:hover {
+      background: var(--color-bg-secondary);
+    }
+
+    .faq__question::after {
+      content: '+';
+      font-size: var(--font-size-xl);
+      color: var(--color-primary);
+      transition: transform var(--transition-fast);
+    }
+
+    .faq__item.active .faq__question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-normal);
+    }
+
+    .faq__item.active .faq__answer {
+      max-height: 500px;
+    }
+
+    .faq__answer-inner {
+      padding: var(--spacing-lg);
+      padding-top: 0;
+      color: var(--color-text-secondary);
+    }
+
+    /* ========================================
+           COMPONENTE - FOOTER
+           ======================================== */
+    .footer {
+      background: var(--color-text-primary);
+      color: var(--color-text-muted);
+      padding: var(--spacing-2xl) 0 var(--spacing-md);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .footer__title {
+      color: white;
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .footer__list {
+      list-style: none;
+    }
+
+    .footer__list li {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .footer__link {
+      color: var(--color-text-muted);
+    }
+
+    .footer__link:hover {
+      color: white;
+    }
+
+    .footer__bottom {
+      text-align: center;
+      padding-top: var(--spacing-xl);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* ========================================
+           RESPONSIVIDADE
+           ======================================== */
+    @media (max-width: 768px) {
+      .hero__title {
+        font-size: var(--font-size-3xl);
+      }
+
+      .nav__list {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .header__inner {
+        flex-direction: column;
+      }
+
+      .section__title {
+        font-size: var(--font-size-2xl);
+      }
+    }
+
+    /* ========================================
+           ACESSIBILIDADE - FOCO VISÍVEL
+           ======================================== */
+    :focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    /* Modo de alto contraste */
+    @media (prefers-contrast: high) {
+      :root {
+        --color-primary: #0000ff;
+        --color-text-primary: #000000;
+        --color-bg-primary: #ffffff;
+      }
+    }
+
+    /* Redução de movimento */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ========================================
+         SKIP LINK - ACESSIBILIDADE
+         Permite usuários de teclado pular para o conteúdo principal
+         ======================================== -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- ========================================
+         HEADER - Cabeçalho Semântico
+         Contém a identidade do site e navegação principal
+         ======================================== -->
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a href="/" class="header__logo" aria-label="Ir para página inicial">
+        🚀 Fundamentos Web
+      </a>
+
+      <!-- NAV - Navegação Principal -->
+      <nav class="nav" role="navigation" aria-label="Navegação principal">
+        <ul class="nav__list">
+          <li><a href="#html" class="nav__link">HTML</a></li>
+          <li><a href="#css" class="nav__link">CSS</a></li>
+          <li><a href="#javascript" class="nav__link">JavaScript</a></li>
+          <li><a href="#seo" class="nav__link">SEO</a></li>
+          <li><a href="#faq" class="nav__link">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================
+         MAIN - Conteúdo Principal
+         Todo o conteúdo principal deve estar aqui
+         ======================================== -->
+  <main id="main-content" role="main">
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title" class="hero__title">
+          Fundamentos de HTML, CSS e JavaScript
+        </h1>
+        <p class="hero__subtitle">
+          Aprenda a criar páginas web modernas, acessíveis e otimizadas
+          para mecanismos de busca com as melhores práticas do mercado.
+        </p>
+        <a href="#html" class="hero__cta">Começar a Aprender</a>
+      </div>
+    </section>
+
+    <!-- ========================================
+             SECTION HTML - Usando ARTICLE para conteúdo independente
+             ======================================== -->
+    <section id="html" class="section" aria-labelledby="html-title">
+      <div class="container">
+        <h2 id="html-title" class="section__title">HTML Semântico</h2>
+
+        <article class="card" aria-labelledby="article-html-intro">
+          <h3 id="article-html-intro" class="card__title">O que é HTML Semântico?</h3>
+          <p class="card__description">
+            HTML semântico significa usar os elementos HTML corretos para
+            transmitir o <strong>significado</strong> do conteúdo, não apenas sua aparência.
+            Isso melhora a acessibilidade, SEO e manutenibilidade do código.
+          </p>
+
+          <!-- Exemplo de código HTML -->
+          <pre class="code-block" aria-label="Exemplo de código HTML semântico"><code><span class="comment">&lt;!-- ❌ HTML NÃO Semântico --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"header"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"nav"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- ✅ HTML Semântico --&gt;</span>
+<span class="tag">&lt;header&gt;</span>
+  <span class="tag">&lt;nav&gt;</span>...<span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;/header&gt;</span></code></pre>
+        </article>
+
+        <!-- Grid de Cards com Tags HTML -->
+        <div class="cards" style="margin-top: var(--spacing-xl);">
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">📄</span>
+            <h3 class="card__title">&lt;header&gt;</h3>
+            <p class="card__description">
+              Define o cabeçalho da página ou de uma seção.
+              Geralmente contém logo, navegação e título.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">🧭</span>
+            <h3 class="card__title">&lt;nav&gt;</h3>
+            <p class="card__description">
+              Define uma seção de navegação com links para
+              outras páginas ou partes da mesma página.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">📝</span>
+            <h3 class="card__title">&lt;main&gt;</h3>
+            <p class="card__description">
+              Representa o conteúdo principal único da página.
+              Deve haver apenas um por documento.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">📰</span>
+            <h3 class="card__title">&lt;article&gt;</h3>
+            <p class="card__description">
+              Um conteúdo independente e autocontido, como
+              um post de blog, notícia ou comentário.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">📂</span>
+            <h3 class="card__title">&lt;section&gt;</h3>
+            <p class="card__description">
+              Agrupa conteúdo tematicamente relacionado,
+              geralmente com seu próprio título.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">📋</span>
+            <h3 class="card__title">&lt;footer&gt;</h3>
+            <p class="card__description">
+              Rodapé da página ou seção. Contém informações
+              como copyright, links e contato.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+             SECTION CSS
+             ======================================== -->
+    <section id="css" class="section section--alt" aria-labelledby="css-title">
+      <div class="container">
+        <h2 id="css-title" class="section__title">CSS Moderno</h2>
+
+        <article class="card" style="max-width: 900px; margin: 0 auto;">
+          <h3 class="card__title">Boas Práticas de CSS</h3>
+
+          <div class="table-wrapper">
+            <table class="table" aria-label="Boas práticas de CSS">
+              <thead>
+                <tr>
+                  <th scope="col">Prática</th>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Exemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>CSS Variables</strong></td>
+                  <td>Use variáveis CSS para cores, espaçamentos e tipografia</td>
+                  <td><code class="code-inline">var(--color-primary)</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Mobile First</strong></td>
+                  <td>Comece estilizando para mobile, depois adicione media queries</td>
+                  <td><code class="code-inline">@media (min-width: 768px)</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Flexbox/Grid</strong></td>
+                  <td>Use CSS Grid e Flexbox para layouts modernos</td>
+                  <td><code class="code-inline">display: grid</code></td>
+                </tr>
+                <tr>
+                  <td><strong>BEM Naming</strong></td>
+                  <td>Use convenção Block__Element--Modifier</td>
+                  <td><code class="code-inline">.card__title--large</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Acessibilidade</strong></td>
+                  <td>Considere contraste, foco e preferências do usuário</td>
+                  <td><code class="code-inline">:focus-visible</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre class="code-block" aria-label="Exemplo de CSS com variáveis"><code><span class="comment">/* Definindo variáveis CSS (Custom Properties) */</span>
+<span class="tag">:root</span> {
+    <span class="attr">--color-primary:</span> <span class="value">#2563eb</span>;
+    <span class="attr">--spacing-md:</span> <span class="value">1rem</span>;
+    <span class="attr">--font-size-base:</span> <span class="value">1rem</span>;
+}
+
+<span class="comment">/* Usando as variáveis */</span>
+<span class="tag">.button</span> {
+    <span class="attr">background:</span> <span class="value">var(--color-primary)</span>;
+    <span class="attr">padding:</span> <span class="value">var(--spacing-md)</span>;
+    <span class="attr">font-size:</span> <span class="value">var(--font-size-base)</span>;
+}</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================================
+             SECTION JAVASCRIPT
+             ======================================== -->
+    <section id="javascript" class="section" aria-labelledby="js-title">
+      <div class="container">
+        <h2 id="js-title" class="section__title">JavaScript Moderno</h2>
+
+        <div class="cards">
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">⚡</span>
+            <h3 class="card__title">ES6+ Features</h3>
+            <p class="card__description">
+              Use recursos modernos como arrow functions,
+              template literals, destructuring e async/await.
+            </p>
+            <pre class="code-block"><code><span class="comment">// Arrow Function</span>
+<span class="attr">const</span> soma = <span class="value">(a, b) => a + b</span>;
+
+<span class="comment">// Template Literal</span>
+<span class="attr">const</span> msg = <span class="value">`Olá, ${nome}!`</span>;
+
+<span class="comment">// Async/Await</span>
+<span class="attr">const</span> data = <span class="tag">await</span> fetch(url);</code></pre>
+          </article>
+
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">🔄</span>
+            <h3 class="card__title">DOM Manipulation</h3>
+            <p class="card__description">
+              Aprenda a manipular elementos HTML de forma
+              eficiente e performática.
+            </p>
+            <pre class="code-block"><code><span class="comment">// Selecionando elementos</span>
+<span class="attr">const</span> btn = document
+  .<span class="tag">querySelector</span>(<span class="value">'.btn'</span>);
+
+<span class="comment">// Adicionando evento</span>
+btn.<span class="tag">addEventListener</span>(<span class="value">'click'</span>,
+  () => console.log(<span class="value">'Clicou!'</span>));</code></pre>
+          </article>
+
+          <article class="card">
+            <span class="card__icon" aria-hidden="true">📦</span>
+            <h3 class="card__title">Módulos ES6</h3>
+            <p class="card__description">
+              Organize seu código em módulos reutilizáveis
+              com import e export.
+            </p>
+            <pre class="code-block"><code><span class="comment">// utils.js</span>
+<span class="tag">export</span> <span class="attr">const</span> formatDate =
+  (date) => date.toLocaleDateString();
+
+<span class="comment">// main.js</span>
+<span class="tag">import</span> { formatDate } <span class="tag">from</span>
+  <span class="value">'./utils.js'</span>;</code></pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+             SECTION SEO
+             ======================================== -->
+    <section id="seo" class="section section--alt" aria-labelledby="seo-title">
+      <div class="container">
+        <h2 id="seo-title" class="section__title">SEO & Schema Markup</h2>
+
+        <article class="card" style="max-width: 900px; margin: 0 auto;">
+          <h3 class="card__title">Checklist de SEO</h3>
+
+          <!-- FIGURE - Para imagens com legenda -->
+          <figure style="margin: var(--spacing-lg) 0;">
+            <figcaption style="margin-bottom: var(--spacing-md); font-weight: 600;">
+              Elementos essenciais para um bom SEO:
+            </figcaption>
+            <ul style="list-style: none; padding: 0;">
+              <li style="padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-bg-tertiary);">
+                ✅ <strong>Title Tag</strong> - Título único e descritivo (50-60 caracteres)
+              </li>
+              <li style="padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-bg-tertiary);">
+                ✅ <strong>Meta Description</strong> - Descrição atrativa (150-160 caracteres)
+              </li>
+              <li style="padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-bg-tertiary);">
+                ✅ <strong>Heading Hierarchy</strong> - Use H1 único, H2, H3 em ordem lógica
+              </li>
+              <li style="padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-bg-tertiary);">
+                ✅ <strong>Alt Text</strong> - Texto alternativo em todas as imagens
+              </li>
+              <li style="padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-bg-tertiary);">
+                ✅ <strong>Schema Markup</strong> - Dados estruturados JSON-LD
+              </li>
+              <li style="padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-bg-tertiary);">
+                ✅ <strong>Canonical URL</strong> - Evita conteúdo duplicado
+              </li>
+              <li style="padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-bg-tertiary);">
+                ✅ <strong>Open Graph</strong> - Otimiza compartilhamento em redes sociais
+              </li>
+              <li style="padding: var(--spacing-sm) 0;">
+                ✅ <strong>Mobile Friendly</strong> - Design responsivo obrigatório
+              </li>
+            </ul>
+          </figure>
+
+          <h4 style="margin: var(--spacing-lg) 0 var(--spacing-md);">Exemplo de Schema Markup (JSON-LD)</h4>
+          <pre class="code-block" aria-label="Exemplo de Schema Markup"><code><span class="tag">&lt;script</span> <span class="attr">type=</span><span class="value">"application/ld+json"</span><span class="tag">&gt;</span>
+{
+  <span class="value">"@context"</span>: <span class="value">"https://schema.org"</span>,
+  <span class="value">"@type"</span>: <span class="value">"Article"</span>,
+  <span class="value">"headline"</span>: <span class="value">"Título do Artigo"</span>,
+  <span class="value">"author"</span>: {
+    <span class="value">"@type"</span>: <span class="value">"Person"</span>,
+    <span class="value">"name"</span>: <span class="value">"Seu Nome"</span>
+  },
+  <span class="value">"datePublished"</span>: <span class="value">"2026-02-07"</span>,
+  <span class="value">"image"</span>: <span class="value">"https://exemplo.com/img.jpg"</span>
+}
+<span class="tag">&lt;/script&gt;</span></code></pre>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================================
+             SECTION FAQ - Com ARIA para acessibilidade
+             ======================================== -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title" class="section__title">Perguntas Frequentes</h2>
+
+        <!-- ASIDE - Conteúdo relacionado mas não essencial -->
+        <aside class="faq" role="complementary" aria-label="Perguntas frequentes">
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-1">
+              O que é HTML semântico?
+            </button>
+            <div id="faq-answer-1" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                <p>
+                  HTML semântico é o uso de tags HTML que transmitem
+                  significado sobre o conteúdo, não apenas sua aparência.
+                  Tags como <code class="code-inline">&lt;header&gt;</code>,
+                  <code class="code-inline">&lt;nav&gt;</code>,
+                  <code class="code-inline">&lt;main&gt;</code>,
+                  <code class="code-inline">&lt;article&gt;</code>,
+                  <code class="code-inline">&lt;section&gt;</code> e
+                  <code class="code-inline">&lt;footer&gt;</code> ajudam
+                  navegadores e mecanismos de busca a entender a estrutura da página.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-2">
+              Por que SEO é importante?
+            </button>
+            <div id="faq-answer-2" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                <p>
+                  SEO (Search Engine Optimization) é importante porque
+                  ajuda seu site a ser encontrado nos mecanismos de busca,
+                  aumentando o tráfego orgânico, a visibilidade da marca
+                  e potencialmente as conversões, sem custo por clique.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-3">
+              O que é Schema Markup?
+            </button>
+            <div id="faq-answer-3" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                <p>
+                  Schema Markup é um vocabulário de dados estruturados
+                  que ajuda os mecanismos de busca a entender melhor o
+                  conteúdo das páginas. Isso pode resultar em rich snippets
+                  nos resultados de busca, melhorando a taxa de cliques.
+                </p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========================================
+             ADDRESS - Informações de contato
+             ======================================== -->
+    <section class="section section--alt" aria-labelledby="contact-title">
+      <div class="container" style="text-align: center;">
+        <h2 id="contact-title" class="section__title">Contato</h2>
+        <address style="font-style: normal;">
+          <p>Para mais informações, entre em contato:</p>
+          <p>
+            <a href="mailto:email@exemplo.com">email@exemplo.com</a>
+          </p>
+          <p>
+            <a href="https://github.com/seuusuario" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+          </p>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+         FOOTER - Rodapé
+         ======================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">Sobre o Curso</h3>
+          <p>
+            Material didático para aprender os fundamentos
+            de desenvolvimento web moderno.
+          </p>
+        </div>
+
+        <nav aria-label="Links do rodapé">
+          <h3 class="footer__title">Links Úteis</h3>
+          <ul class="footer__list">
+            <li><a href="#html" class="footer__link">HTML</a></li>
+            <li><a href="#css" class="footer__link">CSS</a></li>
+            <li><a href="#javascript" class="footer__link">JavaScript</a></li>
+            <li><a href="#seo" class="footer__link">SEO</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Recursos externos">
+          <h3 class="footer__title">Recursos</h3>
+          <ul class="footer__list">
+            <li>
+              <a href="https://developer.mozilla.org" class="footer__link" target="_blank" rel="noopener noreferrer">
+                MDN Web Docs
+              </a>
+            </li>
+            <li>
+              <a href="https://web.dev" class="footer__link" target="_blank" rel="noopener noreferrer">
+                web.dev
+              </a>
+            </li>
+            <li>
+              <a href="https://schema.org" class="footer__link" target="_blank" rel="noopener noreferrer">
+                Schema.org
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <!-- TIME - Data/hora semanticamente marcada -->
+        <p>
+          <small>
+            © <time datetime="2026">2026</time> Fundamentos Web.
+            Criado com ❤️ para fins educacionais.
+          </small>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================
+         JAVASCRIPT - Interatividade
+         ======================================== -->
+  <script>
+    // ========================================
+    // FAQ ACCORDION - Interatividade Acessível
+    // ========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      // Selecionando todos os botões FAQ
+      const faqButtons = document.querySelectorAll('.faq__question');
+
+      faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const faqItem = button.parentElement;
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+          // Fecha todos os outros itens
+          document.querySelectorAll('.faq__item').forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.faq__question')
+              .setAttribute('aria-expanded', 'false');
+          });
+
+          // Toggle do item atual
+          if (!isExpanded) {
+            faqItem.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // ========================================
+      // SMOOTH SCROLL - Navegação suave
+      // ========================================
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+
+            // Foco para acessibilidade
+            target.setAttribute('tabindex', '-1');
+            target.focus();
+          }
+        });
+      });
+
+      // ========================================
+      // EXEMPLO: Fetch API (para demonstração)
+      // ========================================
+      const fetchData = async (url) => {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error('Erro ao buscar dados:', error);
+          return null;
+        }
+      };
+
+      // ========================================
+      // EXEMPLO: Local Storage
+      // ========================================
+      const storage = {
+        set: (key, value) => {
+          try {
+            localStorage.setItem(key, JSON.stringify(value));
+          } catch (e) {
+            console.error('Erro ao salvar no localStorage:', e);
+          }
+        },
+        get: (key) => {
+          try {
+            const item = localStorage.getItem(key);
+            return item ? JSON.parse(item) : null;
+          } catch (e) {
+            console.error('Erro ao ler do localStorage:', e);
+            return null;
+          }
+        },
+        remove: (key) => {
+          localStorage.removeItem(key);
+        }
+      };
+
+      // ========================================
+      // EXEMPLO: Debounce (Performance)
+      // ========================================
+      const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      };
+
+      // ========================================
+      // EXEMPLO: Intersection Observer (Lazy Loading)
+      // ========================================
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Opcional: parar de observar após visível
+            // observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observar todas as seções
+      document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+      });
+
+      console.log('🚀 Página carregada com sucesso!');
+      console.log('📚 Este é um exemplo didático de HTML, CSS e JS');
+    });
+  </script>
+</body>
+
+</html>
