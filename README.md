@@ -19,7 +19,7 @@
 
 ## 📖 Sobre o Projeto
 
-Este repositório é um **curso completo full-stack** com 16 guias detalhados (~15.500 linhas) cobrindo desde fundamentos web até frameworks modernos, ferramentas de desenvolvimento e configuração avançada do GitHub Copilot. Material ideal para:
+Este repositório é um **curso completo full-stack** com 17 guias detalhados (~16.200 linhas) cobrindo desde fundamentos web até frameworks modernos, ferramentas de desenvolvimento, configuração avançada do GitHub Copilot e hospedagem de projetos. Material ideal para:
 
 - 🎓 **Iniciantes** que querem aprender do zero
 - 💼 **Profissionais** buscando atualização
@@ -32,26 +32,65 @@ Este repositório é um **curso completo full-stack** com 16 guias detalhados (~
 
 ```
 html_teste/
-├── index.html          # Página de exemplo com todas as técnicas web
-├── README.md           # Este arquivo (índice geral)
-└── docs/               # 16 guias completos
-    ├── 01-html.md              # HTML5 semântico
-    ├── 02-css.md               # CSS3 moderno
-    ├── 03-javascript.md        # JavaScript ES6+
-    ├── 04-seo.md               # SEO e otimização
-    ├── 05-schema-markup.md     # Dados estruturados
-    ├── 06-padroes-web.md       # Padrões W3C/WCAG
-    ├── 07-react.md             # React 18
-    ├── 08-vuejs.md             # Vue.js 3
-    ├── 09-nextjs.md            # Next.js 14
-    ├── 10-typescript.md        # TypeScript 5
-    ├── 11-python.md            # Python 3
-    ├── 12-django.md            # Django 5
-    ├── 13-flutter.md           # Flutter 3
-    ├── 14-git.md               # Git e GitHub
-    ├── 15-extensoes-vscode.md  # Extensões VS Code
-    └── 16-github-copilot-pro.md # GitHub Copilot Pro+
+├── index.html              # Página de exemplo com SEO completo
+├── examples.html           # Galeria de exemplos (índice)
+├── dragao_voando.html      # Exemplo de animação CSS avançada
+├── README.md               # Este arquivo (índice geral)
+└── docs/                   # 17 guias completos
+    ├── 01-html.md                  # HTML5 semântico
+    ├── 02-css.md                   # CSS3 moderno
+    ├── 03-javascript.md            # JavaScript ES6+
+    ├── 04-seo.md                   # SEO e otimização
+    ├── 05-schema-markup.md         # Dados estruturados
+    ├── 06-padroes-web.md           # Padrões W3C/WCAG
+    ├── 07-react.md                 # React 18
+    ├── 08-vuejs.md                 # Vue.js 3
+    ├── 09-nextjs.md                # Next.js 14
+    ├── 10-typescript.md            # TypeScript 5
+    ├── 11-python.md                # Python 3
+    ├── 12-django.md                # Django 5
+    ├── 13-flutter.md               # Flutter 3
+    ├── 14-git.md                   # Git e GitHub
+    ├── 15-extensoes-vscode.md      # Extensões VS Code
+    ├── 16-github-copilot-pro.md    # GitHub Copilot Pro+
+    └── 17-github-pages-preview.md  # GitHub Pages & Preview
 ```
+
+---
+
+## 🌐 Demonstrações ao Vivo
+
+🎯 **Veja os exemplos funcionando no navegador!**
+
+### 🚀 GitHub Pages (Hospedagem Oficial)
+
+> 🔴 **Status:** Aguardando configuração do GitHub Pages
+
+**Próximos passos para ativar:**
+1. Acesse: `Configurações do Repositório` → `Pages`
+2. Selecione: `Branch: main` → `Folder: / (root)`
+3. Clique em `Save`
+
+Após ativado, os exemplos estarão em:
+```
+Galeria de Exemplos: https://fabianolopes3333fr.github.io/html_teste/examples.html
+Site Principal: https://fabianolopes3333fr.github.io/html_teste/
+Dragão Voando: https://fabianolopes3333fr.github.io/html_teste/dragao_voando.html
+```
+
+### 🔗 Preview Instantâneo (Sem Configuração)
+
+**Já funciona agora! Clique para ver:**
+
+| Exemplo | Tecnologias | Preview |
+|---------|-------------|----------|
+| 🎨 **Galeria de Exemplos** | HTML5, CSS Grid, Responsive | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/examples.html) |
+| 📝 **Página Completa SEO** | HTML5, Schema Markup, Open Graph | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/index.html) |
+| 🐉 **Dragão Voando** | CSS Animations, SVG, Keyframes | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/dragao_voando.html) |
+
+> 💡 **Dica:** Clique com botão direito → "Ver código-fonte" para estudar o HTML!
+
+**Quer hospedar seus próprios exemplos?** 👉 **[Ver guia completo de GitHub Pages](docs/17-github-pages-preview.md)**
 
 ---
 
@@ -82,6 +121,7 @@ html_teste/
 | 14 | **Git** | Branches, merge, rebase, GitHub, workflows | ~1000 | [📦 Acessar](docs/14-git.md) |
 | 15 | **Extensões VS Code** | 58 extensões essenciais para full-stack | ~600 | [🧩 Acessar](docs/15-extensoes-vscode.md) |
 | 16 | **GitHub Copilot Pro+** | Configuração avançada, instruções customizadas, otimização | ~900 | [🤖 Acessar](docs/16-github-copilot-pro.md) |
+| 17 | **GitHub Pages & Preview** | Hospedar projetos, previews para alunos, deploy | ~700 | [🌐 Acessar](docs/17-github-pages-preview.md) |
 
 ---
 
@@ -143,6 +183,18 @@ Configure seu VS Code como um profissional com nossos guias completos:
 
 **[→ Ver guia completo de configuração](docs/16-github-copilot-pro.md)**
 
+### 🌐 [Guia de Hospedagem e Preview](docs/17-github-pages-preview.md)
+
+**Compartilhe seus projetos online!** Aprenda a hospedar gratuitamente:
+- 🚀 **GitHub Pages** - Hospedagem gratuita oficial do GitHub
+- 🔗 **Preview Instantâneo** - Compartilhe links sem configuração
+- 📦 **Netlify/Vercel** - Alternativas com CI/CD automático
+- 🎨 **Página Índice** - Criar galeria de exemplos profissional
+- 🔧 **Troubleshooting** - Resolver problemas comuns
+- 📱 **PWA e Analytics** - Transforme em app e rastreie visitas
+
+**[→ Ver guia completo de hospedagem](docs/17-github-pages-preview.md)**
+
 ---
 
 ## 🛠️ Ferramentas Recomendadas
@@ -183,11 +235,12 @@ Configure seu VS Code como um profissional com nossos guias completos:
 
 ## 📊 Estatísticas do Projeto
 
-- 📝 **16 guias completos**
-- 📖 **~15.500 linhas de documentação**
+- 📝 **17 guias completos**
+- 📖 **~16.200 linhas de documentação**
 - 💻 **11 tecnologias cobertas**
 - 🧩 **58 extensões VS Code catalogadas**
 - 🤖 **Configuração completa GitHub Copilot Pro+**
+- 🌐 **Guia completo de hospedagem GitHub Pages**
 - 🎯 **Centenas de exemplos práticos**
 - 📚 **Tabelas comparativas e referências**
 
