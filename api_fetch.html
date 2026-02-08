@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumo de API REST | Curso Web Development</title>
+  <meta name="description"
+    content="Exemplo de fetch API, async/await, tratamento de erros e renderização dinâmica de dados externos.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 40px 20px;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header p {
+      color: #94a3b8;
+      font-size: 1.1em;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* API Selector */
+    .api-selector {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .api-btn {
+      padding: 12px 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      color: #f5f5f5;
+      border-radius: 10px;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .api-btn:hover {
+      border-color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .api-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: transparent;
+    }
+
+    /* Search */
+    .search-box {
+      display: flex;
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #f5f5f5;
+      font-size: 1em;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #667eea;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .search-input::placeholder {
+      color: #64748b;
+    }
+
+    .search-btn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+
+    .search-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Loading */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 60px;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top-color: #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Error */
+    .error {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .error.show {
+      display: block;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-10px);
+      }
+
+      75% {
+        transform: translateX(10px);
+      }
+    }
+
+    .error-icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+    }
+
+    .error h3 {
+      color: #f87171;
+      margin-bottom: 10px;
+    }
+
+    .error p {
+      color: #94a3b8;
+    }
+
+    /* Results Grid */
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(102, 126, 234, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #f5f5f5;
+    }
+
+    .card-text {
+      color: #94a3b8;
+      font-size: 0.9em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(102, 126, 234, 0.2);
+      color: #a5b4fc;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+    }
+
+    /* User Card (GitHub style) */
+    .user-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .user-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #667eea;
+    }
+
+    .user-name {
+      font-size: 1.3em;
+      margin-bottom: 5px;
+    }
+
+    .user-login {
+      color: #64748b;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+
+    .user-bio {
+      color: #94a3b8;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .user-stats {
+      display: flex;
+      gap: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .user-stat {
+      text-align: center;
+    }
+
+    .user-stat-value {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .user-stat-label {
+      font-size: 0.8em;
+      color: #64748b;
+    }
+
+    .user-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .user-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Pokemon Card */
+    .pokemon-card {
+      text-align: center;
+      padding: 25px;
+    }
+
+    .pokemon-image {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+      image-rendering: pixelated;
+    }
+
+    .pokemon-id {
+      color: #64748b;
+      font-size: 0.9em;
+      margin-bottom: 5px;
+    }
+
+    .pokemon-name {
+      font-size: 1.4em;
+      text-transform: capitalize;
+      margin-bottom: 15px;
+    }
+
+    .pokemon-types {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .pokemon-type {
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .type-fire {
+      background: #f97316;
+      color: white;
+    }
+
+    .type-water {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .type-grass {
+      background: #22c55e;
+      color: white;
+    }
+
+    .type-electric {
+      background: #eab308;
+      color: black;
+    }
+
+    .type-psychic {
+      background: #ec4899;
+      color: white;
+    }
+
+    .type-normal {
+      background: #a8a29e;
+      color: white;
+    }
+
+    .type-fighting {
+      background: #dc2626;
+      color: white;
+    }
+
+    .type-flying {
+      background: #a78bfa;
+      color: white;
+    }
+
+    .type-poison {
+      background: #a855f7;
+      color: white;
+    }
+
+    .type-ground {
+      background: #d97706;
+      color: white;
+    }
+
+    .type-rock {
+      background: #78716c;
+      color: white;
+    }
+
+    .type-bug {
+      background: #84cc16;
+      color: white;
+    }
+
+    .type-ghost {
+      background: #7c3aed;
+      color: white;
+    }
+
+    .type-steel {
+      background: #6b7280;
+      color: white;
+    }
+
+    .type-dragon {
+      background: #6366f1;
+      color: white;
+    }
+
+    .type-dark {
+      background: #44403c;
+      color: white;
+    }
+
+    .type-fairy {
+      background: #f472b6;
+      color: white;
+    }
+
+    .type-ice {
+      background: #06b6d4;
+      color: white;
+    }
+
+    .pokemon-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pokemon-stat-value {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .pokemon-stat-label {
+      font-size: 0.75em;
+      color: #64748b;
+    }
+
+    /* Stats Info */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+
+    .stats-item {
+      text-align: center;
+    }
+
+    .stats-value {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .stats-label {
+      font-size: 0.85em;
+      color: #64748b;
+    }
+
+    /* Code Section */
+    .code-section {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 50px;
+      overflow-x: auto;
+    }
+
+    .code-section h3 {
+      color: #f5f5f5;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    .code-block {
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9em;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+
+    .code-keyword {
+      color: #c084fc;
+    }
+
+    .code-string {
+      color: #4ade80;
+    }
+
+    .code-function {
+      color: #60a5fa;
+    }
+
+    .code-comment {
+      color: #64748b;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: #64748b;
+    }
+
+    .back-link:hover {
+      color: #f5f5f5;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .results {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>🌐 Consumo de API REST</h1>
+      <p>Aprenda a buscar dados de APIs externas usando Fetch API, async/await e tratamento de erros.</p>
+    </header>
+
+    <!-- API Selector -->
+    <div class="api-selector">
+      <button class="api-btn active" data-api="pokemon">🎮 Pokémon API</button>
+      <button class="api-btn" data-api="github">👨‍💻 GitHub API</button>
+      <button class="api-btn" data-api="random-users">👥 Random Users</button>
+    </div>
+
+    <!-- Search Box -->
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="Digite para buscar...">
+      <button class="search-btn" id="searchBtn">🔍 Buscar</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stats-item">
+        <div class="stats-value" id="requestCount">0</div>
+        <div class="stats-label">Requisições</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-value" id="successCount">0</div>
+        <div class="stats-label">Sucesso</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-value" id="errorCount">0</div>
+        <div class="stats-label">Erros</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-value" id="responseTime">0ms</div>
+        <div class="stats-label">Tempo Resp.</div>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Buscando dados...</p>
+    </div>
+
+    <!-- Error -->
+    <div class="error" id="error">
+      <div class="error-icon">❌</div>
+      <h3>Ops! Algo deu errado</h3>
+      <p id="errorMessage">Não foi possível carregar os dados.</p>
+    </div>
+
+    <!-- Results -->
+    <div class="results" id="results"></div>
+
+    <!-- Code Example -->
+    <section class="code-section">
+      <h3>📝 Código Utilizado</h3>
+      <div class="code-block">
+        <span class="code-comment">// Função async para buscar dados</span><br>
+        <span class="code-keyword">async function</span> <span class="code-function">fetchData</span>(url) {<br>
+        &nbsp;&nbsp;<span class="code-keyword">try</span> {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> response = <span
+          class="code-keyword">await</span> <span class="code-function">fetch</span>(url);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> (!response.ok) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">throw new</span> Error(<span
+          class="code-string">`HTTP ${response.status}`</span>);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> data = <span class="code-keyword">await</span>
+        response.<span class="code-function">json</span>();<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> data;<br>
+        &nbsp;&nbsp;} <span class="code-keyword">catch</span> (error) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;console.<span class="code-function">error</span>(<span
+          class="code-string">'Erro:'</span>, error);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">throw</span> error;<br>
+        &nbsp;&nbsp;}<br>
+        }
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Desenvolvido por <a href="https://github.com/fabianolopes3333fr" target="_blank">Fabiano Lopes</a></p>
+      <a href="examples.html" class="back-link">← Voltar para Exemplos</a>
+    </footer>
+  </div>
+
+  <script>
+    // Estado
+    let currentApi = 'pokemon';
+    let stats = {
+      requests: 0,
+      success: 0,
+      errors: 0
+    };
+
+    // Elementos DOM
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const loading = document.getElementById('loading');
+    const error = document.getElementById('error');
+    const errorMessage = document.getElementById('errorMessage');
+    const results = document.getElementById('results');
+
+    // API Endpoints
+    const apis = {
+      pokemon: {
+        placeholder: 'Nome ou ID do Pokémon (ex: pikachu, 25)',
+        search: async (query) => {
+          const url = `https://pokeapi.co/api/v2/pokemon/${query.toLowerCase()}`;
+          const response = await fetch(url);
+          if (!response.ok) throw new Error('Pokémon não encontrado');
+          return await response.json();
+        },
+        random: async () => {
+          const randomIds = Array.from({ length: 12 }, () => Math.floor(Math.random() * 151) + 1);
+          const promises = randomIds.map(id =>
+            fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(r => r.json())
+          );
+          return await Promise.all(promises);
+        },
+        render: (data) => renderPokemon(Array.isArray(data) ? data : [data])
+      },
+      github: {
+        placeholder: 'Nome de usuário do GitHub',
+        search: async (query) => {
+          const url = `https://api.github.com/users/${query}`;
+          const response = await fetch(url);
+          if (!response.ok) throw new Error('Usuário não encontrado');
+          return await response.json();
+        },
+        random: async () => {
+          const users = ['fabianolopes3333fr', 'torvalds', 'gaearon', 'tj', 'sindresorhus', 'addyosmani'];
+          const promises = users.map(user =>
+            fetch(`https://api.github.com/users/${user}`).then(r => r.json())
+          );
+          return await Promise.all(promises);
+        },
+        render: (data) => renderGitHubUsers(Array.isArray(data) ? data : [data])
+      },
+      'random-users': {
+        placeholder: 'Número de usuários (1-50)',
+        search: async (query) => {
+          const count = Math.min(50, Math.max(1, parseInt(query) || 6));
+          const url = `https://randomuser.me/api/?results=${count}`;
+          const response = await fetch(url);
+          if (!response.ok) throw new Error('Erro ao buscar usuários');
+          const data = await response.json();
+          return data.results;
+        },
+        random: async () => {
+          const url = 'https://randomuser.me/api/?results=12';
+          const response = await fetch(url);
+          const data = await response.json();
+          return data.results;
+        },
+        render: (data) => renderRandomUsers(data)
+      }
+    };
+
+    // Alternar API
+    document.querySelectorAll('.api-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.api-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentApi = this.dataset.api;
+        searchInput.placeholder = apis[currentApi].placeholder;
+        searchInput.value = '';
+        loadRandomData();
+      });
+    });
+
+    // Buscar dados
+    async function fetchData(query = '') {
+      const startTime = performance.now();
+
+      showLoading();
+      hideError();
+      stats.requests++;
+      updateStats();
+
+      try {
+        let data;
+        if (query) {
+          data = await apis[currentApi].search(query);
+        } else {
+          data = await apis[currentApi].random();
+        }
+
+        const endTime = performance.now();
+        document.getElementById('responseTime').textContent = `${Math.round(endTime - startTime)}ms`;
+
+        stats.success++;
+        hideLoading();
+        apis[currentApi].render(data);
+        updateStats();
+
+      } catch (err) {
+        const endTime = performance.now();
+        document.getElementById('responseTime').textContent = `${Math.round(endTime - startTime)}ms`;
+
+        stats.errors++;
+        hideLoading();
+        showError(err.message);
+        updateStats();
+      }
+    }
+
+    // Renderizar Pokémon
+    function renderPokemon(pokemons) {
+      results.innerHTML = pokemons.map((pokemon, index) => `
+        <div class="card pokemon-card" style="animation-delay: ${index * 0.05}s">
+          <img src="${pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default}"
+               alt="${pokemon.name}"
+               class="pokemon-image">
+          <div class="pokemon-id">#${String(pokemon.id).padStart(3, '0')}</div>
+          <div class="pokemon-name">${pokemon.name}</div>
+          <div class="pokemon-types">
+            ${pokemon.types.map(t => `
+              <span class="pokemon-type type-${t.type.name}">${t.type.name}</span>
+            `).join('')}
+          </div>
+          <div class="pokemon-stats">
+            <div>
+              <div class="pokemon-stat-value">${pokemon.stats[0].base_stat}</div>
+              <div class="pokemon-stat-label">HP</div>
+            </div>
+            <div>
+              <div class="pokemon-stat-value">${pokemon.stats[1].base_stat}</div>
+              <div class="pokemon-stat-label">ATK</div>
+            </div>
+            <div>
+              <div class="pokemon-stat-value">${pokemon.stats[2].base_stat}</div>
+              <div class="pokemon-stat-label">DEF</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Renderizar usuários GitHub
+    function renderGitHubUsers(users) {
+      results.innerHTML = users.map((user, index) => `
+        <div class="card user-card" style="animation-delay: ${index * 0.05}s">
+          <img src="${user.avatar_url}" alt="${user.login}" class="user-avatar">
+          <div class="user-name">${user.name || user.login}</div>
+          <div class="user-login">@${user.login}</div>
+          <div class="user-bio">${user.bio || 'Sem bio disponível'}</div>
+          <div class="user-stats">
+            <div class="user-stat">
+              <div class="user-stat-value">${user.public_repos}</div>
+              <div class="user-stat-label">Repos</div>
+            </div>
+            <div class="user-stat">
+              <div class="user-stat-value">${user.followers}</div>
+              <div class="user-stat-label">Followers</div>
+            </div>
+            <div class="user-stat">
+              <div class="user-stat-value">${user.following}</div>
+              <div class="user-stat-label">Following</div>
+            </div>
+          </div>
+          <a href="${user.html_url}" target="_blank" class="user-link">Ver Perfil</a>
+        </div>
+      `).join('');
+    }
+
+    // Renderizar Random Users
+    function renderRandomUsers(users) {
+      results.innerHTML = users.map((user, index) => `
+        <div class="card user-card" style="animation-delay: ${index * 0.05}s">
+          <img src="${user.picture.large}" alt="${user.name.first}" class="user-avatar">
+          <div class="user-name">${user.name.first} ${user.name.last}</div>
+          <div class="user-login">@${user.login.username}</div>
+          <div class="user-bio">📍 ${user.location.city}, ${user.location.country}</div>
+          <div class="user-stats">
+            <div class="user-stat">
+              <div class="user-stat-value">${user.dob.age}</div>
+              <div class="user-stat-label">Idade</div>
+            </div>
+            <div class="user-stat">
+              <div class="user-stat-value">${user.location.state.slice(0, 3)}</div>
+              <div class="user-stat-label">Estado</div>
+            </div>
+            <div class="user-stat">
+              <div class="user-stat-value">${user.nat}</div>
+              <div class="user-stat-label">País</div>
+            </div>
+          </div>
+          <a href="mailto:${user.email}" class="user-link">📧 Contato</a>
+        </div>
+      `).join('');
+    }
+
+    // Helpers
+    function showLoading() {
+      loading.classList.add('show');
+      results.innerHTML = '';
+    }
+
+    function hideLoading() {
+      loading.classList.remove('show');
+    }
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      error.classList.add('show');
+    }
+
+    function hideError() {
+      error.classList.remove('show');
+    }
+
+    function updateStats() {
+      document.getElementById('requestCount').textContent = stats.requests;
+      document.getElementById('successCount').textContent = stats.success;
+      document.getElementById('errorCount').textContent = stats.errors;
+    }
+
+    function loadRandomData() {
+      fetchData();
+    }
+
+    // Event Listeners
+    searchBtn.addEventListener('click', () => {
+      const query = searchInput.value.trim();
+      fetchData(query);
+    });
+
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        fetchData(query);
+      }
+    });
+
+    // Inicializar
+    searchInput.placeholder = apis[currentApi].placeholder;
+    loadRandomData();
+  </script>
+</body>
+
+</html>

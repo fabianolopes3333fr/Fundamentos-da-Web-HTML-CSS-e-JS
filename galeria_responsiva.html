@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria Responsiva | Curso Web Development</title>
+  <meta name="description"
+    content="Galeria de imagens responsiva com CSS Grid, lightbox modal e lazy loading. Exemplo de design moderno e otimizado.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.8em;
+      margin-bottom: 15px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Filtros */
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+      background: #1a1a1a;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .filter-btn {
+      padding: 12px 28px;
+      background: transparent;
+      color: #fff;
+      border: 2px solid #333;
+      border-radius: 30px;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: #667eea;
+      color: #667eea;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: transparent;
+    }
+
+    /* Galeria */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #1a1a1a;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .gallery-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .gallery-item:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .gallery-item:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .gallery-item:nth-child(4) {
+      animation-delay: 0.25s;
+    }
+
+    .gallery-item:nth-child(5) {
+      animation-delay: 0.3s;
+    }
+
+    .gallery-item:nth-child(6) {
+      animation-delay: 0.35s;
+    }
+
+    .gallery-item:nth-child(7) {
+      animation-delay: 0.4s;
+    }
+
+    .gallery-item:nth-child(8) {
+      animation-delay: 0.45s;
+    }
+
+    .gallery-item:nth-child(9) {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .gallery-item.hidden {
+      display: none;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px 20px 20px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      transform: translateY(0);
+    }
+
+    .overlay h3 {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    .overlay p {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+
+    .overlay .category {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.75em;
+      margin-top: 10px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2em;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 2em;
+      padding: 20px 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-prev {
+      left: 20px;
+      border-radius: 10px;
+    }
+
+    .lightbox-next {
+      right: 20px;
+      border-radius: 10px;
+    }
+
+    .lightbox-info {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .lightbox-info h3 {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .lightbox-info p {
+      opacity: 0.7;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.9em;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #1a1a1a;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        padding: 15px;
+        gap: 15px;
+      }
+
+      .lightbox-nav {
+        padding: 15px 10px;
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        gap: 10px;
+      }
+
+      .filter-btn {
+        padding: 10px 20px;
+        font-size: 0.85em;
+      }
+    }
+
+    /* Loading skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, #1a1a1a 25%, #252525 50%, #1a1a1a 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+    }
+
+    @keyframes skeleton-loading {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 30px;
+      background: #1a1a1a;
+      border-top: 1px solid #333;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .stat-label {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>🖼️ Galeria Responsiva</h1>
+    <p>Uma coleção de imagens incríveis com grid responsivo, filtros e lightbox interativo</p>
+  </header>
+
+  <!-- Filtros -->
+  <nav class="filters">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="nature">🌿 Natureza</button>
+    <button class="filter-btn" data-filter="city">🏙️ Cidades</button>
+    <button class="filter-btn" data-filter="tech">💻 Tecnologia</button>
+    <button class="filter-btn" data-filter="abstract">🎨 Abstrato</button>
+  </nav>
+
+  <!-- Galeria -->
+  <div class="gallery" id="gallery">
+    <!-- As imagens serão inseridas via JavaScript -->
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value" id="totalImages">0</div>
+      <div class="stat-label">Imagens</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="totalCategories">4</div>
+      <div class="stat-label">Categorias</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="currentFilter">Todos</div>
+      <div class="stat-label">Filtro Ativo</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Desenvolvido por <a href="https://github.com/fabianolopes3333fr" target="_blank">Fabiano Lopes</a></p>
+    <a href="examples.html" class="back-link">← Voltar para Exemplos</a>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-counter" id="lightboxCounter">1 / 9</span>
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">❮</button>
+    <div class="lightbox-content">
+      <img id="lightboxImage" src="" alt="">
+      <div class="lightbox-info">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDescription"></p>
+      </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">❯</button>
+  </div>
+
+  <script>
+    // Dados das imagens (usando Unsplash como placeholder)
+    const images = [
+      {
+        id: 1,
+        src: 'https://picsum.photos/seed/nature1/800/600',
+        title: 'Floresta Tropical',
+        description: 'Uma vista deslumbrante da natureza',
+        category: 'nature'
+      },
+      {
+        id: 2,
+        src: 'https://picsum.photos/seed/city1/800/600',
+        title: 'Skyline Urbano',
+        description: 'Vista noturna da cidade',
+        category: 'city'
+      },
+      {
+        id: 3,
+        src: 'https://picsum.photos/seed/tech1/800/600',
+        title: 'Código em Ação',
+        description: 'Programação moderna',
+        category: 'tech'
+      },
+      {
+        id: 4,
+        src: 'https://picsum.photos/seed/abstract1/800/600',
+        title: 'Arte Abstrata',
+        description: 'Formas e cores vibrantes',
+        category: 'abstract'
+      },
+      {
+        id: 5,
+        src: 'https://picsum.photos/seed/nature2/800/600',
+        title: 'Montanhas Nevadas',
+        description: 'Paisagem de inverno',
+        category: 'nature'
+      },
+      {
+        id: 6,
+        src: 'https://picsum.photos/seed/city2/800/600',
+        title: 'Ruas Iluminadas',
+        description: 'A cidade que nunca dorme',
+        category: 'city'
+      },
+      {
+        id: 7,
+        src: 'https://picsum.photos/seed/tech2/800/600',
+        title: 'Setup Gamer',
+        description: 'Tecnologia de ponta',
+        category: 'tech'
+      },
+      {
+        id: 8,
+        src: 'https://picsum.photos/seed/abstract2/800/600',
+        title: 'Padrões Geométricos',
+        description: 'Design minimalista',
+        category: 'abstract'
+      },
+      {
+        id: 9,
+        src: 'https://picsum.photos/seed/nature3/800/600',
+        title: 'Por do Sol',
+        description: 'Cores do entardecer',
+        category: 'nature'
+      },
+      {
+        id: 10,
+        src: 'https://picsum.photos/seed/city3/800/600',
+        title: 'Ponte Histórica',
+        description: 'Arquitetura clássica',
+        category: 'city'
+      },
+      {
+        id: 11,
+        src: 'https://picsum.photos/seed/tech3/800/600',
+        title: 'Circuitos',
+        description: 'O coração da tecnologia',
+        category: 'tech'
+      },
+      {
+        id: 12,
+        src: 'https://picsum.photos/seed/abstract3/800/600',
+        title: 'Ondas Digitais',
+        description: 'Arte digital moderna',
+        category: 'abstract'
+      }
+    ];
+
+    // Estado
+    let currentFilter = 'all';
+    let currentIndex = 0;
+    let filteredImages = [...images];
+
+    // Elementos DOM
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDescription = document.getElementById('lightboxDescription');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+
+    // Categorias labels
+    const categoryLabels = {
+      nature: '🌿 Natureza',
+      city: '🏙️ Cidade',
+      tech: '💻 Tecnologia',
+      abstract: '🎨 Abstrato'
+    };
+
+    // Renderizar galeria
+    function renderGallery() {
+      gallery.innerHTML = '';
+
+      filteredImages.forEach((image, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.dataset.category = image.category;
+        item.style.animationDelay = `${index * 0.05}s`;
+
+        item.innerHTML = `
+          <img src="${image.src}" alt="${image.title}" loading="lazy">
+          <div class="overlay">
+            <h3>${image.title}</h3>
+            <p>${image.description}</p>
+            <span class="category">${categoryLabels[image.category]}</span>
+          </div>
+        `;
+
+        item.addEventListener('click', () => openLightbox(index));
+        gallery.appendChild(item);
+      });
+
+      // Atualizar stats
+      document.getElementById('totalImages').textContent = filteredImages.length;
+    }
+
+    // Filtrar imagens
+    function filterImages(category) {
+      currentFilter = category;
+
+      if (category === 'all') {
+        filteredImages = [...images];
+        document.getElementById('currentFilter').textContent = 'Todos';
+      } else {
+        filteredImages = images.filter(img => img.category === category);
+        document.getElementById('currentFilter').textContent = categoryLabels[category];
+      }
+
+      renderGallery();
+    }
+
+    // Event listeners para filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        filterImages(this.dataset.filter);
+      });
+    });
+
+    // Lightbox
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+      const image = filteredImages[currentIndex];
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.title;
+      lightboxTitle.textContent = image.title;
+      lightboxDescription.textContent = image.description;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${filteredImages.length}`;
+    }
+
+    function navigateLightbox(direction) {
+      currentIndex += direction;
+
+      if (currentIndex < 0) currentIndex = filteredImages.length - 1;
+      if (currentIndex >= filteredImages.length) currentIndex = 0;
+
+      updateLightbox();
+    }
+
+    // Fechar lightbox com ESC ou clique fora
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Inicializar
+    renderGallery();
+  </script>
+</body>
+
+</html>
