@@ -1,0 +1,174 @@
+# =====================================
+# Configuração Jekyll - GitHub Pages
+# =====================================
+
+# Nome do site
+title: Fundamentos da Web - Curso Full-Stack
+description: Curso completo de desenvolvimento web - Do HTML básico até aplicações full-stack com React, Vue, Next.js, Python, Django, Flutter e Git
+author: Fabiano Lopes
+lang: pt-br
+
+# GitHub
+github:
+  repository_url: https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS
+  repository_name: Fundamentos-da-Web-HTML-CSS-e-JS
+
+# URLs
+baseurl: "" # Deixe vazio se estiver usando repositório nomeado como username.github.io
+url: "https://fabianolopes3333fr.github.io"
+
+# =====================================
+# Configurações do Jekyll
+# =====================================
+
+# Excluir do build
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - .git
+  - .github
+  - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+
+# Incluir no build
+include:
+  - _pages
+
+# =====================================
+# Markdown e sintaxe
+# =====================================
+
+# Engine de Markdown
+markdown: kramdown
+
+# Configurações do Kramdown
+kramdown:
+  input: GFM  # GitHub Flavored Markdown
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# =====================================
+# SOLUÇÃO DO ERRO: Desabilitar Liquid
+# =====================================
+
+# Não processar Liquid nos arquivos markdown da pasta docs
+# Isso evita que {{ }} e {% %} sejam interpretados como tags Liquid
+liquid:
+  error_mode: warn  # Apenas avisa, não quebra o build
+  strict_filters: false
+  strict_variables: false
+
+# Desabilitar processamento Liquid em blocos de código
+# Isso preserva exemplos de React, Vue, Django, etc
+kramdown:
+  parse_block_html: true
+
+# =====================================
+# Tema
+# =====================================
+
+# Tema do GitHub Pages (opcional)
+# theme: jekyll-theme-minimal
+# Você pode descomentar e escolher um tema:
+# - jekyll-theme-minimal
+# - jekyll-theme-cayman
+# - jekyll-theme-slate
+# - jekyll-theme-architect
+
+# =====================================
+# Plugins
+# =====================================
+
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-relative-links
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Configuração de plugins
+readme_index:
+  enabled: true
+
+relative_links:
+  enabled: true
+  collections: false
+
+optional_front_matter:
+  remove_originals: false
+
+# =====================================
+# Defaults de Front Matter
+# =====================================
+
+defaults:
+  # Configuração para arquivos HTML
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+  # Configuração para arquivos markdown da pasta docs
+  # IMPORTANTE: render_with_liquid: false evita processamento Liquid
+  - scope:
+      path: "docs"
+      type: "pages"
+    values:
+      layout: default
+      render_with_liquid: false  # ← CHAVE PARA RESOLVER O ERRO!
+
+# =====================================
+# Coleções (opcional)
+# =====================================
+
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+
+# =====================================
+# SEO e Social
+# =====================================
+
+twitter:
+  username: fabianolopes3333fr
+  card: summary_large_image
+
+social:
+  name: Fabiano Lopes
+  links:
+    - https://github.com/fabianolopes3333fr
+
+# Logo do site (opcional)
+# logo: /assets/img/logo.png
+
+# =====================================
+# Configurações Adicionais
+# =====================================
+
+# Permalink style
+permalink: pretty
+
+# Timezone
+timezone: America/Sao_Paulo
+
+# Encoding
+encoding: utf-8
+
+# Compile future posts
+future: false
+
+# Show drafts
+show_drafts: false
+
+# Livereload (apenas desenvolvimento local)
+livereload: false

@@ -1,0 +1,10 @@
+Este arquivo desabilita o processamento Jekyll no GitHub Pages.
+
+Se você estiver tendo problemas com o build do GitHub Pages,
+este arquivo força o GitHub a servir os arquivos HTML diretamente
+sem processá-los através do Jekyll.
+
+No entanto, estamos usando _config.yml com configurações específicas
+para permitir Jekyll mas desabilitar Liquid nos arquivos de documentação.
+
+Mantenha este arquivo apenas se houver problemas com o build.
