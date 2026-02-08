@@ -173,9 +173,9 @@ https://htmlpreview.github.io/?https://github.com/SEU-USUARIO/SEU-REPO/blob/main
 
 **Exemplo:**
 ```
-Original: https://github.com/fabianolopes3333fr/html_teste/blob/main/dragao_voando.html
+Original: https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS/blob/main/dragao_voando.html
 
-Preview: https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/dragao_voando.html
+Preview: https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS/blob/main/dragao_voando.html
 ```
 
 #### **2. Raw.githack.com**
@@ -450,7 +450,7 @@ Em `index.html`:
     <div class="footer">
       <p>
         📚 Desenvolvido por <a href="https://github.com/fabianolopes3333fr" target="_blank">Fabiano Lopes</a>
-        | 📖 <a href="https://github.com/fabianolopes3333fr/html_teste" target="_blank">Ver no GitHub</a>
+        | 📖 <a href="https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS" target="_blank">Ver no GitHub</a>
       </p>
     </div>
   </div>
@@ -644,16 +644,16 @@ Antes de compartilhar com seus alunos:
 
 ## 🎓 Exemplo Prático: Este Repositório
 
-**Repositório:** https://github.com/fabianolopes3333fr/html_teste
+**Repositório:** https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS
 
-**GitHub Pages:** https://fabianolopes3333fr.github.io/html_teste/
+**GitHub Pages:** https://fabianolopes3333fr.github.io/Fundamentos-da-Web-HTML-CSS-e-JS/
 
 **Exemplos:**
-- 📄 Página Principal: https://fabianolopes3333fr.github.io/html_teste/
-- 🐉 Dragão Voando: https://fabianolopes3333fr.github.io/html_teste/dragao_voando.html
+- 📄 Página Principal: https://fabianolopes3333fr.github.io/Fundamentos-da-Web-HTML-CSS-e-JS/
+- 🐉 Dragão Voando: https://fabianolopes3333fr.github.io/Fundamentos-da-Web-HTML-CSS-e-JS/dragao_voando.html
 
 **Preview Instantâneo:**
-- HTMLPreview: https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/dragao_voando.html
+- HTMLPreview: https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS/blob/main/dragao_voando.html
 
 ---
 

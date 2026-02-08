@@ -73,9 +73,9 @@ html_teste/
 
 Após ativado, os exemplos estarão em:
 ```
-Galeria de Exemplos: https://fabianolopes3333fr.github.io/html_teste/examples.html
-Site Principal: https://fabianolopes3333fr.github.io/html_teste/
-Dragão Voando: https://fabianolopes3333fr.github.io/html_teste/dragao_voando.html
+Galeria de Exemplos: https://fabianolopes3333fr.github.io/Fundamentos-da-Web-HTML-CSS-e-JS/examples.html
+Site Principal: https://fabianolopes3333fr.github.io/Fundamentos-da-Web-HTML-CSS-e-JS/
+Dragão Voando: https://fabianolopes3333fr.github.io/Fundamentos-da-Web-HTML-CSS-e-JS/dragao_voando.html
 ```
 
 ### 🔗 Preview Instantâneo (Sem Configuração)
@@ -84,9 +84,9 @@ Dragão Voando: https://fabianolopes3333fr.github.io/html_teste/dragao_voando.ht
 
 | Exemplo | Tecnologias | Preview |
 |---------|-------------|----------|
-| 🎨 **Galeria de Exemplos** | HTML5, CSS Grid, Responsive | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/examples.html) |
-| 📝 **Página Completa SEO** | HTML5, Schema Markup, Open Graph | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/index.html) |
-| 🐉 **Dragão Voando** | CSS Animations, SVG, Keyframes | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/html_teste/blob/main/dragao_voando.html) |
+| 🎨 **Galeria de Exemplos** | HTML5, CSS Grid, Responsive | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS/blob/main/examples.html) |
+| 📝 **Página Completa SEO** | HTML5, Schema Markup, Open Graph | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS/blob/main/index.html) |
+| 🐉 **Dragão Voando** | CSS Animations, SVG, Keyframes | [👁️ Ver](https://htmlpreview.github.io/?https://github.com/fabianolopes3333fr/Fundamentos-da-Web-HTML-CSS-e-JS/blob/main/dragao_voando.html) |
 
 > 💡 **Dica:** Clique com botão direito → "Ver código-fonte" para estudar o HTML!
 
