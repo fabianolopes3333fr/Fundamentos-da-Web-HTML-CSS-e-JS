@@ -279,6 +279,114 @@ Se este material te ajudou, considere dar uma ⭐ no repositório!
 
 ---
 
+<div align="center">
+
+## 💖 Apoie Este Projeto
+
+<h3>✨ Gostou do conteúdo? Considere fazer uma doação! ✨</h3>
+
+<p>Este curso é <strong>100% gratuito e open source</strong>. Se este material te ajudou na sua jornada de aprendizado, você pode apoiar o autor para que mais conteúdos como este continuem sendo criados!</p>
+
+<br>
+
+### 🇧🇷 PIX (Brasil)
+
+<table align="center">
+<tr>
+<td align="center">
+<h4>📱 Chave PIX</h4>
+<code>8912f895-f734-4f89-acf4-e16752b95812</code>
+<br><br>
+<em>Copie e cole no seu app de banco!</em>
+</td>
+</tr>
+</table>
+
+<br>
+
+---
+
+### 🇺🇸 Estados Unidos (USD)
+
+<details>
+<summary><strong>💵 Clique para ver dados bancários USD</strong></summary>
+<br>
+
+| Campo | Valor |
+|-------|-------|
+| **Nome** | Fabiano Lopes de Souza |
+| **Número da conta** | `8311039281` |
+| **Tipo da conta** | Checking |
+| **Routing number** (Wire/ACH) | `026073150` |
+| **Swift/BIC** | `CMFGUS33` |
+| **Banco** | Community Federal Savings Bank |
+| **Endereço** | 89-16 Jamaica Ave, Woodhaven, NY, 11421, United States |
+
+> 📌 Use **Routing number** para transferências domésticas dos EUA
+> 📌 Use **Swift/BIC** para transferências internacionais
+
+</details>
+
+<br>
+
+---
+
+### 🇪🇺 Europa (EUR)
+
+<details>
+<summary><strong>💶 Clique para ver dados bancários EUR</strong></summary>
+<br>
+
+| Campo | Valor |
+|-------|-------|
+| **Nome** | Fabiano Lopes de Souza |
+| **IBAN** | `BE74 9670 9261 0007` |
+| **Swift/BIC** | `TRWIBEB1XXX` |
+| **Banco** | Wise |
+| **Endereço** | Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium |
+
+> 📌 Use **IBAN** para transferências SEPA (zona Euro)
+> 📌 Use **Swift/BIC** para transferências fora da zona SEPA
+
+</details>
+
+<br>
+
+---
+
+### 🇬🇧 Reino Unido (GBP)
+
+<details>
+<summary><strong>💷 Clique para ver dados bancários GBP</strong></summary>
+<br>
+
+| Campo | Valor |
+|-------|-------|
+| **Nome** | Fabiano Lopes de Souza |
+| **Número da conta** | `69925779` |
+| **Sort code** | `23-14-70` |
+| **IBAN** | `GB31 TRWI 2314 7069 9257 79` |
+| **Swift/BIC** | `TRWIGB2LXXX` |
+| **Banco** | Wise Payments Limited |
+| **Endereço** | 1st Floor, Worship Square, 65 Clifton Street, London, EC2A 4JE, United Kingdom |
+
+> 📌 Use **Sort code + Account number** para transferências do Reino Unido
+> 📌 Use **Swift/BIC** para transferências internacionais
+
+</details>
+
+<br>
+
+---
+
+<p>
+<strong>🙏 Qualquer valor é muito apreciado e ajuda a manter este projeto vivo!</strong>
+</p>
+
+</div>
+
+---
+
 <p align="center">
   <strong>🚀 Bons estudos e boa sorte na sua jornada de desenvolvimento!</strong>
 </p>
