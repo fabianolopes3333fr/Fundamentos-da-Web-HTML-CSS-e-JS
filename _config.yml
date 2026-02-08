@@ -34,6 +34,8 @@ exclude:
   - Gemfile.lock
   - package.json
   - package-lock.json
+  - JEKYLL_FIX.md
+  - .nojekyll.backup
 
 # Incluir no build
 include:
