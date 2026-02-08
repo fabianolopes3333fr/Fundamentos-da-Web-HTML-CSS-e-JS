@@ -117,11 +117,10 @@ defaults:
     values:
       layout: default
 
-  # Configuração para arquivos markdown da pasta docs
+  # Configuração para TODOS os arquivos da pasta docs
   # IMPORTANTE: render_with_liquid: false evita processamento Liquid
   - scope:
       path: "docs"
-      type: "pages"
     values:
       layout: default
       render_with_liquid: false  # ← CHAVE PARA RESOLVER O ERRO!
