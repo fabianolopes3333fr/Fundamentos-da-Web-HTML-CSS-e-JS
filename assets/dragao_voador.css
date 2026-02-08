@@ -1,0 +1,356 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg,
+      #0a0a2e 0%,
+      #1a1a4e 30%,
+      #2d1b4e 60%,
+      #4a1a3d 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Estrelas */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Lua */
+.moon {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fffde7, #fdd835);
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(253, 216, 53, 0.5);
+}
+
+/* Nuvens */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  animation: float-cloud 20s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 200px;
+  height: 60px;
+  top: 20%;
+  left: -200px;
+  animation-duration: 25s;
+}
+
+.cloud-2 {
+  width: 150px;
+  height: 45px;
+  top: 40%;
+  left: -150px;
+  animation-duration: 30s;
+  animation-delay: 5s;
+}
+
+.cloud-3 {
+  width: 180px;
+  height: 55px;
+  top: 60%;
+  left: -180px;
+  animation-duration: 22s;
+  animation-delay: 10s;
+}
+
+@keyframes float-cloud {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 300px));
+  }
+}
+
+/* Dragão Container */
+.dragon-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fly 4s ease-in-out infinite;
+}
+
+@keyframes fly {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-30px) rotate(2deg);
+  }
+}
+
+/* Dragão SVG */
+.dragon {
+  width: 400px;
+  height: 300px;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+/* Corpo do dragão */
+.dragon-body {
+  fill: #2d5a27;
+  stroke: #1a3d16;
+  stroke-width: 2;
+}
+
+.dragon-belly {
+  fill: #8bc34a;
+}
+
+.dragon-wing {
+  fill: #4a7c43;
+  stroke: #2d5a27;
+  stroke-width: 2;
+  transform-origin: center;
+}
+
+.wing-left {
+  animation: flap-left 0.5s ease-in-out infinite;
+}
+
+.wing-right {
+  animation: flap-right 0.5s ease-in-out infinite;
+}
+
+@keyframes flap-left {
+
+  0%,
+  100% {
+    transform: rotate(-10deg) scaleY(1);
+  }
+
+  50% {
+    transform: rotate(15deg) scaleY(0.9);
+  }
+}
+
+@keyframes flap-right {
+
+  0%,
+  100% {
+    transform: rotate(10deg) scaleY(1);
+  }
+
+  50% {
+    transform: rotate(-15deg) scaleY(0.9);
+  }
+}
+
+.dragon-eye {
+  fill: #ffeb3b;
+  stroke: #f57c00;
+  stroke-width: 1;
+}
+
+.dragon-pupil {
+  fill: #1a1a1a;
+}
+
+.dragon-horn {
+  fill: #5d4037;
+  stroke: #3e2723;
+  stroke-width: 1;
+}
+
+.dragon-spike {
+  fill: #ff5722;
+}
+
+/* Fogo */
+.fire-container {
+  position: absolute;
+  left: 390px;
+  top: 88px;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+  0%,
+  70%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  75%,
+  95% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.fire {
+  width: 100px;
+  height: 40px;
+  background: linear-gradient(90deg,
+      #ff9800 0%,
+      #ff5722 30%,
+      #f44336 60%,
+      transparent 100%);
+  border-radius: 0 50% 50% 0;
+  animation: flicker 0.1s infinite alternate;
+  rotate: 180deg;
+}
+
+@keyframes flicker {
+  from {
+    transform: scaleY(0.9);
+  }
+
+  to {
+    transform: scaleY(1.1);
+  }
+}
+
+/* Partículas de fogo */
+.spark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffeb3b;
+  border-radius: 50%;
+  animation: spark-fly 1s ease-out infinite;
+}
+
+.spark:nth-child(1) {
+  animation-delay: 0s;
+  top: 10px;
+}
+
+.spark:nth-child(2) {
+  animation-delay: 0.2s;
+  top: 20px;
+}
+
+.spark:nth-child(3) {
+  animation-delay: 0.4s;
+  top: 30px;
+}
+
+@keyframes spark-fly {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(80px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Montanhas */
+.mountains {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.mountain-1 {
+  left: 0;
+  border-width: 0 150px 180px 150px;
+  border-color: transparent transparent #1a1a3d transparent;
+}
+
+.mountain-2 {
+  left: 200px;
+  border-width: 0 200px 220px 200px;
+  border-color: transparent transparent #252550 transparent;
+}
+
+.mountain-3 {
+  right: 100px;
+  border-width: 0 180px 200px 180px;
+  border-color: transparent transparent #1f1f45 transparent;
+}
+
+.mountain-4 {
+  right: -50px;
+  border-width: 0 120px 150px 120px;
+  border-color: transparent transparent #2a2a5a transparent;
+}
+
+/* Título */
+.title {
+  position: absolute;
+  bottom: 220px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+  color: #ffd700;
+  text-shadow:
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 5px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+
+  to {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.5);
+  }
+}
