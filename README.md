@@ -11,14 +11,15 @@
 [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
 [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/)
 [![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
+[![GitHub Copilot](https://img.shields.io/badge/GitHub_Copilot-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/features/copilot)
 
-> 📚 Curso completo de desenvolvimento web e mobile - Do HTML básico até aplicações full-stack com React, Vue, Next.js, Python, Django, Flutter e Git.
+> 📚 Curso completo de desenvolvimento web e mobile - Do HTML básico até aplicações full-stack com React, Vue, Next.js, Python, Django, Flutter, Git, configuração do VS Code e GitHub Copilot Pro+.
 
 ---
 
 ## 📖 Sobre o Projeto
 
-Este repositório é um **curso completo full-stack** com 14 guias detalhados (~14.000 linhas) cobrindo desde fundamentos web até frameworks modernos. Material ideal para:
+Este repositório é um **curso completo full-stack** com 16 guias detalhados (~15.500 linhas) cobrindo desde fundamentos web até frameworks modernos, ferramentas de desenvolvimento e configuração avançada do GitHub Copilot. Material ideal para:
 
 - 🎓 **Iniciantes** que querem aprender do zero
 - 💼 **Profissionais** buscando atualização
@@ -33,7 +34,7 @@ Este repositório é um **curso completo full-stack** com 14 guias detalhados (~
 html_teste/
 ├── index.html          # Página de exemplo com todas as técnicas web
 ├── README.md           # Este arquivo (índice geral)
-└── docs/               # 14 guias completos
+└── docs/               # 16 guias completos
     ├── 01-html.md              # HTML5 semântico
     ├── 02-css.md               # CSS3 moderno
     ├── 03-javascript.md        # JavaScript ES6+
@@ -47,7 +48,9 @@ html_teste/
     ├── 11-python.md            # Python 3
     ├── 12-django.md            # Django 5
     ├── 13-flutter.md           # Flutter 3
-    └── 14-git.md               # Git e GitHub
+    ├── 14-git.md               # Git e GitHub
+    ├── 15-extensoes-vscode.md  # Extensões VS Code
+    └── 16-github-copilot-pro.md # GitHub Copilot Pro+
 ```
 
 ---
@@ -77,6 +80,8 @@ html_teste/
 | 12 | **Django** | Models, Views, Templates, ORM, REST API | ~1000 | [🎸 Acessar](docs/12-django.md) |
 | 13 | **Flutter** | Widgets, State Management, HTTP, SQLite | ~1000 | [🦋 Acessar](docs/13-flutter.md) |
 | 14 | **Git** | Branches, merge, rebase, GitHub, workflows | ~1000 | [📦 Acessar](docs/14-git.md) |
+| 15 | **Extensões VS Code** | 58 extensões essenciais para full-stack | ~600 | [🧩 Acessar](docs/15-extensoes-vscode.md) |
+| 16 | **GitHub Copilot Pro+** | Configuração avançada, instruções customizadas, otimização | ~900 | [🤖 Acessar](docs/16-github-copilot-pro.md) |
 
 ---
 
@@ -109,6 +114,37 @@ Construa projetos reais aplicando os conceitos de cada guia.
 
 ---
 
+## 🧩 Configuração do Ambiente de Desenvolvimento
+
+Configure seu VS Code como um profissional com nossos guias completos:
+
+### 📦 [Guia de Extensões VS Code](docs/15-extensoes-vscode.md)
+
+**58 extensões essenciais** organizadas por categoria:
+- 🤖 **IA e Copilot** - GitHub Copilot, AI Toolkit
+- 🌐 **Web** - Live Server, Auto Rename Tag, CSS Peek
+- ⚛️ **Frameworks** - React, Vue, Tailwind CSS
+- 🐍 **Python/Django** - Pylance, Black Formatter, Django
+- 📱 **Mobile** - Flutter, Dart, React Native
+- 🔧 **Qualidade** - ESLint, Error Lens, SonarQube
+- 📦 **Git** - GitLens, Git Graph
+- 🗄️ **Bancos** - PostgreSQL, SQLTools
+
+### 🤖 [Guia GitHub Copilot Pro+](docs/16-github-copilot-pro.md)
+
+**Turbine sua produtividade 10x** com configurações avançadas:
+- ⚡ **Modelos Avançados** - Claude Opus 4.5, GPT-4.1, Gemini
+- 📝 **Instruções Customizadas** - Ensine o Copilot seus padrões!
+- 🔄 **Commits e PRs Inteligentes** - Geração automática padronizada
+- 🔍 **Code Review IA** - Revisão automática de código
+- 🐍 **Config Python/Django** - Linting, formatação, type hints
+- ⚛️ **Config JS/TS** - ESLint, Prettier, TypeScript
+- 🎯 **Dicas de Performance** - Otimizações para VS Code voar!
+
+**[→ Ver guia completo de configuração](docs/16-github-copilot-pro.md)**
+
+---
+
 ## 🛠️ Ferramentas Recomendadas
 
 | Ferramenta | Uso | Link |
@@ -125,6 +161,7 @@ Construa projetos reais aplicando os conceitos de cada guia.
 ## 🎯 Roadmap de Aprendizado
 
 ### Nível Iniciante (2-3 meses)
+- ✅ Configuração do Ambiente (15-extensoes-vscode.md)
 - ✅ HTML (1-html.md)
 - ✅ CSS (2-css.md)
 - ✅ JavaScript (3-javascript.md)
@@ -146,9 +183,11 @@ Construa projetos reais aplicando os conceitos de cada guia.
 
 ## 📊 Estatísticas do Projeto
 
-- 📝 **14 guias completos**
-- 📖 **~14.000 linhas de documentação**
+- 📝 **16 guias completos**
+- 📖 **~15.500 linhas de documentação**
 - 💻 **11 tecnologias cobertas**
+- 🧩 **58 extensões VS Code catalogadas**
+- 🤖 **Configuração completa GitHub Copilot Pro+**
 - 🎯 **Centenas de exemplos práticos**
 - 📚 **Tabelas comparativas e referências**
 
